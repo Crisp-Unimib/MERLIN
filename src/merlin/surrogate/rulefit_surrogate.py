@@ -1,16 +1,16 @@
 from time import time
 import re
 from typing import Dict
-#from pydot import graph_from_dot_data
+# from pydot import graph_from_dot_data
 import numpy as np
 import pandas as pd
 from sklearn import metrics
 from sklearn.ensemble import GradientBoostingRegressor
 from rulefit import RuleFit
-import merlin.surrogate.generic_surrogate
+from merlin.surrogate import GenericSurrogate
 
 
-class RulefitSurrogate(merlin.surrogate.generic_surrogate.GenericSurrogate):
+class RulefitSurrogate(GenericSurrogate):
     '''
     '''
 

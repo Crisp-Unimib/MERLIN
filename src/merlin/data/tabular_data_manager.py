@@ -2,7 +2,7 @@ import logging
 import ast
 import re
 from merlin.util.logger import build_logger
-import merlin.data.data_manager
+from merlin.data.data_manager import DataManager
 
 import numpy as np
 import pandas as pd
@@ -10,7 +10,7 @@ import pandas as pd
 from sklearn import preprocessing
 
 
-class TabularDataManager(merlin.data.data_manager.DataManager):
+class TabularDataManager(DataManager):
     '''
     '''
 
@@ -59,7 +59,8 @@ class TabularDataManager(merlin.data.data_manager.DataManager):
             assert sum(data_class['Y_predicted'] == class_id) == sum(
                 data_class['Y_predicted'] != class_id)
 
-            self.surrogate_train_data[class_id] = data_class[self.feature_names].copy()
+            self.surrogate_train_data[class_id] = data_class[self.feature_names].copy(
+            )
 
             if data_class['Y_predicted'].dtype == np.dtype(int) or data_class['Y_predicted'].dtype == np.dtype(np.int64):
                 self.Y_predicted_binarized[class_id] = np.array(
@@ -94,7 +95,7 @@ class TabularDataManager(merlin.data.data_manager.DataManager):
         rule_matches = self.get_rule_occurrence(rule)
         return sum(rule_matches)
 
-    def get_rule_examples(self, rule, class_id, typ='add', n_examples=5):
+    def get_rule_examples(self, rule, class_id, n_examples=5):
         rule_matches = self.get_rule_occurrence(rule)
         category_matches = self.Y_predicted == str(class_id)
         matches = rule_matches & category_matches
@@ -104,7 +105,7 @@ class TabularDataManager(merlin.data.data_manager.DataManager):
             perc = round(tot_n * 100 / sum(rule_matches), 2)
         except ZeroDivisionError:
             perc = 0
-        print(f'Rule {typ}: {rule}')
+        print(f'Rule: {rule}')
         print(
             f'Overall, the rule appeared {sum(rule_matches)} times in {self.time_label}.')
         if tot_n == 0:

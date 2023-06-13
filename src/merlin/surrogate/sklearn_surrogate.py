@@ -10,10 +10,10 @@ from sklearn import tree
 from sklearn import metrics
 from sklearn.tree._tree import TREE_UNDEFINED, TREE_LEAF
 from sklearn.model_selection import RandomizedSearchCV
-import merlin.surrogate.generic_surrogate
+from merlin.surrogate import GenericSurrogate
 
 
-class SklearnSurrogate(merlin.surrogate.generic_surrogate.GenericSurrogate):
+class SklearnSurrogate(GenericSurrogate):
     '''
     '''
 
@@ -87,7 +87,7 @@ class SklearnSurrogate(merlin.surrogate.generic_surrogate.GenericSurrogate):
 
         def is_leaf(inner_tree, index):
             # Check whether node is leaf node
-            return (inner_tree.children_left[index] == TREE_LEAF and 
+            return (inner_tree.children_left[index] == TREE_LEAF and
                     inner_tree.children_right[index] == TREE_LEAF)
 
         def prune_index(inner_tree, decisions, index=0):
@@ -95,24 +95,27 @@ class SklearnSurrogate(merlin.surrogate.generic_surrogate.GenericSurrogate):
             # nodes that become leaves during pruning.
             # Do not use this directly - use prune_duplicate_leaves instead.
             if not is_leaf(inner_tree, inner_tree.children_left[index]):
-                prune_index(inner_tree, decisions, inner_tree.children_left[index])
+                prune_index(inner_tree, decisions,
+                            inner_tree.children_left[index])
             if not is_leaf(inner_tree, inner_tree.children_right[index]):
-                prune_index(inner_tree, decisions, inner_tree.children_right[index])
+                prune_index(inner_tree, decisions,
+                            inner_tree.children_right[index])
 
-            # Prune children if both children are leaves now and make the same decision:     
+            # Prune children if both children are leaves now and make the same decision:
             if (is_leaf(inner_tree, inner_tree.children_left[index]) and
                 is_leaf(inner_tree, inner_tree.children_right[index]) and
-                (decisions[index] == decisions[inner_tree.children_left[index]]) and 
-                (decisions[index] == decisions[inner_tree.children_right[index]])):
+                (decisions[index] == decisions[inner_tree.children_left[index]]) and
+                    (decisions[index] == decisions[inner_tree.children_right[index]])):
                 # turn node into a leaf by "unlinking" its children
                 inner_tree.children_left[index] = TREE_LEAF
                 inner_tree.children_right[index] = TREE_LEAF
                 inner_tree.feature[index] = TREE_UNDEFINED
-                ##print("Pruned {}".format(index))
+                # print("Pruned {}".format(index))
 
         def prune_duplicate_leaves(mdl):
-            # Remove leaves if both 
-            decisions = mdl.tree_.value.argmax(axis=2).flatten().tolist() # Decision for each node
+            # Remove leaves if both
+            decisions = mdl.tree_.value.argmax(
+                axis=2).flatten().tolist()  # Decision for each node
             prune_index(mdl.tree_, decisions)
 
         prune_duplicate_leaves(self._model)
@@ -159,7 +162,7 @@ class SklearnSurrogate(merlin.surrogate.generic_surrogate.GenericSurrogate):
         self.logger.info(f'Fidelity of the surrogate: {self.fidelity}')
         self.logger.info(metrics.classification_report(self.predicted_labels_score,
                                                        self.surrogate_predictions))
-                                                       
+
         self.logger.info('Fidelity on training:')
         self.surrogate_predictions_training = self._model.predict(self.X)
         self.logger.info(metrics.classification_report(self.predicted_labels,
@@ -184,9 +187,9 @@ class SklearnSurrogate(merlin.surrogate.generic_surrogate.GenericSurrogate):
 
             # Recursion case
             name = self.feature_names[self._model.tree_.feature[node]]
-            if self._model.tree_.threshold[node] > 0.5:
+            if self._model.tree_.threshold[node] != 0.5:
                 # Case where feature is LEQ variable
-                name = f'{name}LEQ{str(int(self._model.tree_.threshold[node]-0.5))}'
+                name = f'{name}LEQ{str(self._model.tree_.threshold[node])}'
             stack.append(f'~{name}')
             self.logger.debug(stack)
 

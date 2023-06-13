@@ -9,10 +9,9 @@ import os
 import numpy as np
 import pandas as pd
 
-from merlin.util.helpers import jaccard_similarity
 from merlin.util.logger import build_logger
-from merlin.surrogate.sklearn_surrogate import SklearnSurrogate
-from merlin.surrogate.rulefit_surrogate import RulefitSurrogate
+from merlin.surrogate import SklearnSurrogate
+from merlin.surrogate import RulefitSurrogate
 
 
 class Trace:
@@ -94,13 +93,13 @@ class Trace:
     def _initialize_hyperparameters(self, hyperparameters):
         '''Initialize hyperparameters dictionary.
         '''
-        if hyperparameters != {}:        
+        if hyperparameters != {}:
             self.hyperparameters = {
                 'left': defaultdict(lambda: hyperparameters),
                 'right': defaultdict(lambda: hyperparameters),
             }
             return
-        
+
         self.hyperparameters = {
             'left': defaultdict(lambda: {'importance_threshold': 0.95}),
             'right': defaultdict(lambda: {'importance_threshold': 0.95}),

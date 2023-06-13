@@ -4,7 +4,7 @@ import string
 from typing import Dict, List
 
 import logging
-from contrxt.util.logger import build_logger
+from merlin.util.logger import build_logger
 
 
 class DataManager():
@@ -68,6 +68,5 @@ class DataManager():
     def count_rule_occurrence(self, rule):
         return 1
 
-
-    def get_rule_examples(self, rule, class_id, typ='add', n_examples=5):
+    def get_examples(self, rule, class_id, n_examples=5):
         pass

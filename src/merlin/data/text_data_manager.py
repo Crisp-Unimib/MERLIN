@@ -6,10 +6,10 @@ import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.utils import resample
 from merlin.util.helpers import text_formatter
-import merlin.data.data_manager
+from merlin.data.data_manager import DataManager
 
 
-class TextDataManager(merlin.data.data_manager.DataManager):
+class TextDataManager(DataManager):
     '''
     '''
 
@@ -38,7 +38,7 @@ class TextDataManager(merlin.data.data_manager.DataManager):
 
         if percent_dataset < 1:
             data = self.df.sample(frac=percent_dataset,
-                                replace=False, random_state=42).sort_index()
+                                  replace=False, random_state=42).sort_index()
         else:
             data = self.df.copy()
         self.logger.info(f'N. Samples {self.time_label}: {data.shape[0]}')
@@ -61,9 +61,9 @@ class TextDataManager(merlin.data.data_manager.DataManager):
                 data_class = pd.concat([
                     # data_class[data_class['Y_predicted'] == class_id],
                     resample(data_class[data_class['Y_predicted'] == class_id],
-                            replace=True,     # sample with replacement
-                            n_samples=n_negative_class,    # to match majority class
-                            random_state=42), # reproducible results,
+                             replace=True,     # sample with replacement
+                             n_samples=n_negative_class,    # to match majority class
+                             random_state=42),  # reproducible results,
                     data_class[data_class['Y_predicted'] != class_id]
                     # data_class[data_class['Y_predicted'] != class_id].sample(
                     #     n=n_positive_class, replace=False, random_state=42)
@@ -155,4 +155,3 @@ class TextDataManager(merlin.data.data_manager.DataManager):
                 st = st.replace('[...][...]', '[...]')
                 print(st)
         return examples, tot_n, perc
-            

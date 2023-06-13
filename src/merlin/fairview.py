@@ -1,10 +1,9 @@
 import logging
 
-from merlin.trace import Trace
-from merlin.explain import Explain
+from .trace import Trace
 
-from merlin.data.text_data_manager import TextDataManager
-from merlin.data.tabular_data_manager import TabularDataManager
+from merlin.data import TextDataManager
+from merlin.data import TabularDataManager
 
 
 class MERLIN():
@@ -23,8 +22,7 @@ class MERLIN():
                  surrogate_type='sklearn',
                  surrogate_test_size=0.2,
                  save_surrogates=False,
-                 save_csvs=True,
-                 save_bdds=False):
+                 save_csvs=True,):
 
         self.log_level = log_level
         self.hyperparameters_selection = hyperparameters_selection
@@ -35,7 +33,6 @@ class MERLIN():
         self.surrogate_test_size = surrogate_test_size
         self.save_surrogates = save_surrogates
         self.save_csvs = save_csvs
-        self.save_bdds = save_bdds
         self.trace_results = None
         self.explain_results = None
 
@@ -76,18 +73,3 @@ class MERLIN():
         '''
         self.trace.run_trace(percent_dataset)
         self.trace_results = self.trace.results
-
-    def run_explain(self):
-        '''
-        '''
-        self.explain = Explain(
-            self.data_manager,
-            save_path=self.save_path,
-            graphviz_path=self.graphviz_path,
-            trace_results=self.trace_results,
-            log_level=self.log_level,
-            save_bdds=self.save_bdds,
-            save_csvs=self.save_csvs,
-        )
-        self.explain.run_explain()
-        self.explain_results = self.explain.results

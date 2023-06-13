@@ -80,12 +80,12 @@ def jaccard_distance(list1: List, list2: List) -> int:
     return 1 - jaccard_similarity(list1, list2)
 
 
-def text_formatter(text:str,
+def text_formatter(text: str,
                    bc=None,
                    tc=None,
-                   bold:bool=False,
-                   underline:bool=False,
-                   _reversed:bool=False):
+                   bold: bool = False,
+                   underline: bool = False,
+                   _reversed: bool = False):
     """Add requested style to the fgiven string.
 
     Adds ANSI Escape codes to add text color, background color and
@@ -134,4 +134,4 @@ def text_formatter(text:str,
     else:
         r = ''
 
-    return(f'{b}{u}{r}{bc}{tc}{text}\u001b[0m')
+    return (f'{b}{u}{r}{bc}{tc}{text}\u001b[0m')
