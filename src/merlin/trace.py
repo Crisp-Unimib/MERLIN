@@ -9,6 +9,7 @@ import os
 import numpy as np
 import pandas as pd
 
+from merlin.util.helpers import jaccard_similarity
 from merlin.util.logger import build_logger
 from merlin.surrogate import SklearnSurrogate
 from merlin.surrogate import RulefitSurrogate
@@ -72,9 +73,9 @@ class Trace:
     def _assign_classes(self):
         '''Get list of common classes.
         '''
-        classes_t1 = set(self.data_manager['left'].classes)
-        classes_t2 = set(self.data_manager['right'].classes)
-        self.classes = np.array(list(classes_t1.intersection(classes_t2)))
+        classes_left = set(self.data_manager['left'].classes)
+        classes_right = set(self.data_manager['right'].classes)
+        self.classes = np.array(list(classes_left.intersection(classes_right)))
         self.classes.sort()
 
         self.logger.info(f'List of common classes: {self.classes}')

@@ -48,7 +48,7 @@ class TextDataManager(DataManager):
 
         onehot_vectorizer.fit(data['X'])
         self.sparse_samples = onehot_vectorizer.transform(data['X'])
-        self.feature_names = onehot_vectorizer.get_feature_names()
+        self.feature_names = list(onehot_vectorizer.get_feature_names_out())
 
         for i, class_id in enumerate(self.classes):
 

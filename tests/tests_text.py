@@ -9,7 +9,7 @@ from merlin import MERLIN
 from merlin.data import TextDataManager
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
-(X_t1, predicted_labels_t1,
+(X_left, predicted_labels_left,
  X_right, predicted_labels_right) = test_utils.setup_synthetic_text()
 
 class TestMERLINText(unittest.TestCase):
@@ -21,19 +21,19 @@ class TestMERLINText(unittest.TestCase):
             shutil.rmtree(f'{dir_path}/test_results')
         os.mkdir(f'{dir_path}/test_results')
 
-        self.assertEqual(len(X_t1), len(predicted_labels_t1),
+        self.assertEqual(len(X_left), len(predicted_labels_left),
                          'Different prediction and X sizes in t1')
         self.assertEqual(len(X_right), len(predicted_labels_right),
                          'Different prediction and X sizes in t2')
 
-        TextDataManager(X_t1, predicted_labels_t1, 'left')
+        TextDataManager(X_left, predicted_labels_left, 'left')
         TextDataManager(X_right, predicted_labels_right, 'right')
 
     def test_1_trace_instantiation(self):
         '''
         '''
         MERLIN(
-            X_t1, predicted_labels_t1,
+            X_left, predicted_labels_left,
             X_right, predicted_labels_right,
             data_type='text', surrogate_type='sklearn',
             hyperparameters_selection=False,
@@ -44,12 +44,12 @@ class TestMERLINText(unittest.TestCase):
     def test_2_trace_run(self):
         '''
         '''
-        exp = MERLIN(X_t1, predicted_labels_t1,
+        exp = MERLIN(X_left, predicted_labels_left,
                       X_right, predicted_labels_right,
                       data_type='text', surrogate_type='sklearn',
                       hyperparameters_selection=False,
                       save_path=f'{dir_path}/test_results',
-                      save_surrogates=False, save_bdds=False)
+                      save_surrogates=False)
 
         percent_mc = exp.trace.run_montecarlo(threshold=0.5)
         self.assertEqual(percent_mc, 0.2, f'Percent mc is {percent_mc}')
@@ -63,12 +63,12 @@ class TestMERLINText(unittest.TestCase):
     def test_3_explain(self):
         '''
         '''
-        exp = MERLIN(X_t1, predicted_labels_t1,
+        exp = MERLIN(X_left, predicted_labels_left,
                       X_right, predicted_labels_right,
                       data_type='text', surrogate_type='sklearn',
                       hyperparameters_selection=False,
                       save_path=f'{dir_path}/test_results',
-                      save_surrogates=False, save_bdds=False)
+                      save_surrogates=False)
         exp.run_trace()
         exp.run_explain()
 
@@ -77,12 +77,12 @@ class TestMERLINText(unittest.TestCase):
         '''
         self.assertRaises(
             NotImplementedError, MERLIN, 
-            X_t1, predicted_labels_t1,
+            X_left, predicted_labels_left,
             X_right, predicted_labels_right,
             data_type='text', surrogate_type='rulefit',
             hyperparameters_selection=False,
             save_path=f'{dir_path}/test_results',
-            save_surrogates=False, save_bdds=False
+            save_surrogates=False
         )
 
 if __name__ == '__main__':
