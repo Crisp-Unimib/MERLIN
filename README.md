@@ -12,6 +12,12 @@
 
 ## Why do we might need MERLIN?
 
+When choosing between two black-box machine learning models, a user might be uncertain about which is better for his decision-making. The two models might be similar in predictive accuracy given the same task while completely different in their inner working - e.g., being trained on different substrata of data or using a different learning algorithm. The same data instance might be classified differently between the two models, with the user not understanding the reasons behind the dissimilarity.
+
+![](/img/MERLIN.jpg)
+
+Model contrastive natural language explanations clarify why a specific instance was classified differently by providing the main classification paths that have changed or remained the same. These explanations can help choose which model is more beneficial for the user's purpose.
+
 Imagine we have a machine learning classifier, let's say M1, and wish to understand how -and to what extent- it differs from a second model M2.
 
 1. Can we estimate to what extent M2 classifies data coherently to the predictions made by the M1 model?
@@ -23,6 +29,8 @@ Imagine we have a machine learning classifier, let's say M1, and wish to underst
 MERLIN is about **explaining how two distinct models differ in their classification behaviour.**
 
 MERLIN takes as input the training data and predictions of two distinct classifiers M1 and M2. Then, it traces the decision criteria of both classifiers by encoding the changes in the decision logic through Binary Decision Diagrams. Then (ii) it provides "global, model-agnostic, model-contrastive (M-contrast) "explanations in natural language, estimating why -and to what extent- the models differ in their behaviour.
+
+MERLIN generalizes the approach proposed in _Malandri, L., Mercorio, F., Mezzanzanica, M., Nobani, N., & Seveso, A. (2022). ContrXT: Generating contrastive explanations from any text classifier. Information Fusion, 81, 103-115._, namely symbolic reasoning moving from time contrastive to _model contrastive_ dealing with both textual and tabular classifiers.
 
 ## What MERLIN needs as input?
 
