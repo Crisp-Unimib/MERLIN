@@ -64,7 +64,7 @@ The Natural Language Explanation (NLE) for _Occupancy_ reveals that one path has
 
 ### (3) Natural Language Explanations for Text Classifiers
 
-The same process can also be applied to text classifiiers. For example, in the _20newsgroups_ dataset, one might closely look at class _atheism_ as for this class, the number of deleted paths is higher than the added ones.
+The same process can also be applied to text classifiers. For example, in the _20newsgroups_ dataset, one might closely look at class _atheism_ as for this class, the number of deleted paths is higher than the added ones.
 
 ![](/img/alt.atheism.png)
 
