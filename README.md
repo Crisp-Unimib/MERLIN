@@ -25,7 +25,7 @@ MERLIN aims at answering to the following questions:
 2. Why do the criteria used by M1 result in class _c_, but M2 does not use the same criteria to classify as _c_?
 3. Can we use natural language to explain the differences between models making them more comprehensible to final users?
 
-For details and citations, see the [references' section](References).
+For details and citations, see the [references' section](#References).
 
 ## Install
 
