@@ -122,19 +122,10 @@ To do so, MERLIN provides the _get_rule_examples_ function, which requires the u
 
 A complete example of MERLIN usage is provided in the notebook ["MERLIN Demo"](/MERLIN%20Demo.ipynb) inside of the main repository folder. A notebook example with ML model training is also available in this repository, which can also be accessed in this [Google Colab notebook](https://colab.research.google.com/drive/1hb4KN0SYxdj9SaExqqFGmAXAIyUnBVnA?usp=sharing).
 
-## Running tests
-
-Basic unit tests are provided. To run them, after installation, execute
-the following command while in the main directory:
-
-```
-python -m unittest discover
-```
-
 ## References
 
 A citation for MERLIN will be released soon.
 
-MERLIN generalizes the approach proposed in _Malandri, L., Mercorio, F., Mezzanzanica, M., Nobani, N., & Seveso, A. (2022). ContrXT: Generating contrastive explanations from any text classifier. Information Fusion, 81, 103-115._, namely symbolic reasoning moving from time contrastive to _model contrastive_ dealing with both textual and tabular classifiers.
+MERLIN generalizes the approach proposed in _Malandri, L., Mercorio, F., Mezzanzanica, M., Nobani, N., & Seveso, A. (2022). ContrXT: Generating contrastive explanations from any text classifier. Information Fusion, 81, 103-115._ 
 
 
