@@ -59,9 +59,9 @@ Full documentation on how to install Graphviz on any platform is available
 [here](https://graphviz.org/download/).
 
 
-## What MERLIN needs as input?
+## Input
 
-MERLIN takes as input the _"feature data"_ (can be training or test, labelled or unlabelled) and the corresponding _"labels"_ predicted by the classifier. This means you don't need to wrap MERLIN within your code at all!
+MERLIN takes as input the _"feature data"_ (can be training or test) and the corresponding _"labels"_ predicted by the classifier. This means you don't need to wrap MERLIN within your code at all!
 As optional parameters, the user can specify:
 
 - the coverage of the dataset to be used (default is 100%); otherwise, a sampling procedure is used;
