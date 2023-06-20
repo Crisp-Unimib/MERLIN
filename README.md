@@ -126,6 +126,6 @@ A complete example of MERLIN usage is provided in the notebook ["MERLIN Demo"](/
 
 A citation for MERLIN will be released soon.
 
-MERLIN generalizes the approach proposed in _Malandri, L., Mercorio, F., Mezzanzanica, M., Nobani, N., & Seveso, A. (2022). ContrXT: Generating contrastive explanations from any text classifier. Information Fusion, 81, 103-115._ 
+MERLIN generalizes the approach proposed in _Malandri, L., Mercorio, F., Mezzanzanica, M., Nobani, N., & Seveso, A. (2022). ContrXT: Generating contrastive explanations from any text classifier. Information Fusion, 81, 103-115._ [(bibtex)](https://scholar.googleusercontent.com/scholar.bib?q=info:grt1neFEdRcJ:scholar.google.com/&output=citation&scisdr=Cm3RQ6UsEMDigjKDj8Q:AGlGAw8AAAAAZJGFl8TYeLihXsVBKrkZgOa4NPE&scisig=AGlGAw8AAAAAZJGFl-jfO1QlTIaAGbDcabFjUJk&scisf=4&ct=citation&cd=-1&hl=en)
 
 
