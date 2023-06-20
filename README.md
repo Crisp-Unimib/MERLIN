@@ -8,21 +8,56 @@
 
 # MERLIN
 
-**_A global, model-agnostic, contrastive explainer for any tabular or text classifier_**
-
+<!---
 ## Why do we might need MERLIN?
 
 When choosing between two black-box machine learning models, a user might be uncertain about which is better for his decision-making. The two models might be similar in predictive accuracy given the same task while completely different in their inner working - e.g., being trained on different substrata of data or using a different learning algorithm. The same data instance might be classified differently between the two models, with the user not understanding the reasons behind the dissimilarity.
+--->
 
 ![](/img/MERLIN.jpg)
 
-Model contrastive natural language explanations clarify why a specific instance was classified differently by providing the main classification paths that have changed or remained the same. These explanations can help choose which model is more beneficial for the user's purpose.
+**_MERLIN is a global, model-agnostic, contrastive explainer for any tabular or text classifier_**. It provides contrastive explanations of how the behaviour of two machine learning models differs.
 
 Imagine we have a machine learning classifier, let's say M1, and wish to understand how -and to what extent- it differs from a second model M2.
+MERLIN aims at answering to the following questions:
 
 1. Can we estimate to what extent M2 classifies data coherently to the predictions made by the M1 model?
 2. Why do the criteria used by M1 result in class _c_, but M2 does not use the same criteria to classify as _c_?
 3. Can we use natural language to explain the differences between models making them more comprehensible to final users?
+
+For details and citations, see the [references' section](References).
+
+## Install
+
+MERLIN is available on [PyPi](https://pypi.org/project/MERLINXAI/). Simply run:
+
+```
+pip install merlinxai
+```
+
+Or clone the repository and run:
+
+```
+pip install .
+```
+
+The PyEDA package is required but has not been added to the dependencies.
+This is due to installation errors on Windows. If you are on Linux or Mac, you
+should be able to install it by running:
+
+```
+pip3 install pyeda
+```
+
+However, if you are on Windows, we found that the best way to install is through
+Christophe Gohlke's [pythonlibs page](https://www.lfd.uci.edu/~gohlke/pythonlibs/#pyeda).
+For further information, please consult the official PyEDA
+[installation documentation](https://pyeda.readthedocs.io/en/latest/install.html).
+
+To produce the PDF files, a Graphviz installation is also required.
+Full documentation on how to install Graphviz on any platform is available
+[here](https://graphviz.org/download/).
+
 
 ## What can MERLIN do?
 
@@ -30,7 +65,7 @@ MERLIN is about **explaining how two distinct models differ in their classificat
 
 MERLIN takes as input the training data and predictions of two distinct classifiers M1 and M2. Then, it traces the decision criteria of both classifiers by encoding the changes in the decision logic through Binary Decision Diagrams. Then (ii) it provides "global, model-agnostic, model-contrastive (M-contrast) "explanations in natural language, estimating why -and to what extent- the models differ in their behaviour.
 
-MERLIN generalizes the approach proposed in _Malandri, L., Mercorio, F., Mezzanzanica, M., Nobani, N., & Seveso, A. (2022). ContrXT: Generating contrastive explanations from any text classifier. Information Fusion, 81, 103-115._, namely symbolic reasoning moving from time contrastive to _model contrastive_ dealing with both textual and tabular classifiers.
+
 
 ## What MERLIN needs as input?
 
@@ -83,37 +118,6 @@ To do so, MERLIN provides the _get_rule_examples_ function, which requires the u
 
 <img src="/img/get_examples.PNG" width="600">
 
-## Installation
-
-MERLIN is available on [PyPi](https://pypi.org/project/MERLINXAI/). Simply run:
-
-```
-pip install merlinxai
-```
-
-Or clone the repository and run:
-
-```
-pip install .
-```
-
-The PyEDA package is required but has not been added to the dependencies.
-This is due to installation errors on Windows. If you are on Linux or Mac, you
-should be able to install it by running:
-
-```
-pip3 install pyeda
-```
-
-However, if you are on Windows, we found that the best way to install is through
-Christophe Gohlke's [pythonlibs page](https://www.lfd.uci.edu/~gohlke/pythonlibs/#pyeda).
-For further information, please consult the official PyEDA
-[installation documentation](https://pyeda.readthedocs.io/en/latest/install.html).
-
-To produce the PDF files, a Graphviz installation is also required.
-Full documentation on how to install Graphviz on any platform is available
-[here](https://graphviz.org/download/).
-
 ## Tutorials and Usage
 
 A complete example of MERLIN usage is provided in the notebook ["MERLIN Demo"](/MERLIN%20Demo.ipynb) inside of the main repository folder. A notebook example with ML model training is also available in this repository, which can also be accessed in this [Google Colab notebook](https://colab.research.google.com/drive/1hb4KN0SYxdj9SaExqqFGmAXAIyUnBVnA?usp=sharing).
@@ -130,3 +134,7 @@ python -m unittest discover
 ## References
 
 A citation for MERLIN will be released soon.
+
+MERLIN generalizes the approach proposed in _Malandri, L., Mercorio, F., Mezzanzanica, M., Nobani, N., & Seveso, A. (2022). ContrXT: Generating contrastive explanations from any text classifier. Information Fusion, 81, 103-115._, namely symbolic reasoning moving from time contrastive to _model contrastive_ dealing with both textual and tabular classifiers.
+
+
