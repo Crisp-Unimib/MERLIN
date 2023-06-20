@@ -59,14 +59,6 @@ Full documentation on how to install Graphviz on any platform is available
 [here](https://graphviz.org/download/).
 
 
-## What can MERLIN do?
-
-MERLIN is about **explaining how two distinct models differ in their classification behaviour.**
-
-MERLIN takes as input the training data and predictions of two distinct classifiers M1 and M2. Then, it traces the decision criteria of both classifiers by encoding the changes in the decision logic through Binary Decision Diagrams. Then (ii) it provides "global, model-agnostic, model-contrastive (M-contrast) "explanations in natural language, estimating why -and to what extent- the models differ in their behaviour.
-
-
-
 ## What MERLIN needs as input?
 
 MERLIN takes as input the _"feature data"_ (can be training or test, labelled or unlabelled) and the corresponding _"labels"_ predicted by the classifier. This means you don't need to wrap MERLIN within your code at all!
