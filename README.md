@@ -74,6 +74,8 @@ As optional parameters, the user can specify:
 In this example, we apply MERLIN on a tabular dataset named _Occupancy_, which revolves around predicting occupancy in an office room based on sensor measurements of light, temperature, humidity, and CO2 levels. 
 In this case, M1 is responsible for classifying instances during the daytime, while M2 handles instances during the nighttime.
 
+### BDD2Text
+
 The BDD2Text for _Occupancy_ reveals that one path has not changed between M1 and M2: a high level of light, in the 4th quartile, means that the room is well-lit and is the best indicator for showing whether it is occupied or not. 
 
 There is also one added path in M2: at nighttime, having the light variable in the 3rd quartile now leads to a positive classification, which was not true in M1. During the daytime, the light in this 3rd quartile would not have been sufficient to classify a data instance positively, but it is so during nighttime.
@@ -86,8 +88,22 @@ There is also one added path in M2: at nighttime, having the light variable in t
 &nbsp;
 &nbsp;
 
+### Get Rules
 
-### MERLIN on text data
+The NLE shows the differences between the two models. However, a user might also wish to see example instances in the datasets where these rules apply.
+
+To do so, MERLIN provides the _get_rule_examples_ function, which requires the user to specify a rule to be applied and the number of examples to show.
+
+&nbsp;
+&nbsp;
+<p align="center">
+<img src="/img/get_examples.PNG" width="700" >
+</p>
+&nbsp;
+&nbsp;
+
+
+## MERLIN on text data
 
 The same process can also be applied to text classifiers. For example, in the _20newsgroups_ dataset, one might closely look at class _atheism_ as for this class, the number of deleted paths is higher than the added ones.
 
@@ -99,6 +115,8 @@ The same process can also be applied to text classifiers. For example, in the _2
 &nbsp;
 &nbsp;
 
+### BDD2Text
+
 The NLE for _atheism_ shows the presence of the word _bill_ leads the retrained classifier M2 to assign the label _atheism_ to a specific record, whilst the presence of such a feature was not a criterion for the previous classifier M1.
 Conversely, the explanation shows that M1 used the feature _keith_ to assign the label, whilst M2 discarded this rule.
 
@@ -106,13 +124,6 @@ Both terms refer to the name of the posts' authors: _Bill_'s posts are only cont
 
 Finally, M2 discarded the rule _having political atheist_ that was sufficient for M1 for classifying the instance.
 
-### (4) Get Rule Examples
-
-The NLE shows the differences between the two models. However, a user might also wish to see example instances in the datasets where these rules apply.
-
-To do so, MERLIN provides the _get_rule_examples_ function, which requires the user to specify a rule to be applied and the number of examples to show.
-
-<img src="/img/get_examples.PNG" width="600">
 
 ## Tutorials and Usage
 
