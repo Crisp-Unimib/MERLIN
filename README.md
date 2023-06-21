@@ -8,12 +8,6 @@
 
 # MERLIN
 
-<!---
-## Why do we might need MERLIN?
-
-When choosing between two black-box machine learning models, a user might be uncertain about which is better for his decision-making. The two models might be similar in predictive accuracy given the same task while completely different in their inner working - e.g., being trained on different substrata of data or using a different learning algorithm. The same data instance might be classified differently between the two models, with the user not understanding the reasons behind the dissimilarity.
---->
-
 ![](/img/MERLIN.jpg)
 
 **_MERLIN is a global, model-agnostic, contrastive explainer for any tabular or text classifier_**. It provides contrastive explanations of how the behaviour of two machine learning models differs.
@@ -107,14 +101,6 @@ To do so, MERLIN provides the _get_rule_examples_ function, which requires the u
 
 The same process can also be applied to text classifiers. For example, in the _20newsgroups_ dataset, one might closely look at class _atheism_ as for this class, the number of deleted paths is higher than the added ones.
 
-&nbsp;
-&nbsp;
-<p align="center">
-<img src="/img/bdd2text_LMI.PNG" width="700" >
-</p>
-&nbsp;
-&nbsp;
-
 ### BDD2Text
 
 The NLE for _atheism_ shows the presence of the word _bill_ leads the retrained classifier M2 to assign the label _atheism_ to a specific record, whilst the presence of such a feature was not a criterion for the previous classifier M1.
@@ -123,6 +109,14 @@ Conversely, the explanation shows that M1 used the feature _keith_ to assign the
 Both terms refer to the name of the posts' authors: _Bill_'s posts are only contained within the dataset used to retrain whilst _Keith_'s ones are more frequent in the initial dataset rather than the second one (dataset taken from _Jin, P., Zhang, Y., Chen, X., & Xia, Y. Bag-of-embeddings for text classification. In IJCAI-2016_).
 
 Finally, M2 discarded the rule _having political atheist_ that was sufficient for M1 for classifying the instance.
+
+&nbsp;
+&nbsp;
+<p align="center">
+<img src="/img/bdd2text_LMI.PNG" width="700" >
+</p>
+&nbsp;
+&nbsp;
 
 
 ## Tutorials and Usage
