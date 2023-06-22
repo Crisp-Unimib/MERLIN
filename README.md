@@ -67,11 +67,27 @@ As optional parameters, the user can specify:
 In this example, we apply MERLIN on a tabular dataset named _Occupancy_, which revolves around predicting occupancy in an office room based on sensor measurements of light, temperature, humidity, and CO2 levels.
 In this case, M1 is responsible for classifying instances during the daytime, while M2 handles instances during the nighttime.
 
+```
+from merlin import MERLIN
+
+exp = MERLIN(X_left, predicted_labels_left,
+             X_right, predicted_labels_right,
+             data_type='tabular', surrogate_type='sklearn',
+             save_path=f'results/',)
+
+exp.run_trace()
+```
+
 ### BDD2Text
 
 The BDD2Text for _Occupancy_ reveals that one path has not changed between M1 and M2: a high level of light, in the 4th quartile, means that the room is well-lit and is the best indicator for showing whether it is occupied or not.
 
 There is also one added path in M2: at nighttime, having the light variable in the 3rd quartile now leads to a positive classification, which was not true in M1. During the daytime, the light in this 3rd quartile would not have been sufficient to classify a data instance positively, but it is so during nighttime.
+
+```
+exp.run_explain()
+exp.explain.BDD2Text()
+```
 
 &nbsp;
 &nbsp;
@@ -87,6 +103,10 @@ There is also one added path in M2: at nighttime, having the light variable in t
 The NLE shows the differences between the two models. However, a user might also wish to see example instances in the datasets where these rules apply.
 
 To do so, MERLIN provides the _get_rule_examples_ function, which requires the user to specify a rule to be applied and the number of examples to show.
+
+```
+exp.data_manager['left'].get_rule_examples(rule, n_examples=5)
+```
 
 &nbsp;
 &nbsp;
