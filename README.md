@@ -52,7 +52,6 @@ To produce the PDF files, a Graphviz installation is also required.
 Full documentation on how to install Graphviz on any platform is available
 [here](https://graphviz.org/download/).
 
-
 ## Input
 
 MERLIN takes as input the _"feature data"_ (can be training or test, tabular or free text) and the corresponding _"labels"_ predicted by the classifier. This means you don't need to wrap MERLIN within your code at all!
@@ -65,17 +64,18 @@ As optional parameters, the user can specify:
 
 ## MERLIN on tabular data
 
-In this example, we apply MERLIN on a tabular dataset named _Occupancy_, which revolves around predicting occupancy in an office room based on sensor measurements of light, temperature, humidity, and CO2 levels. 
+In this example, we apply MERLIN on a tabular dataset named _Occupancy_, which revolves around predicting occupancy in an office room based on sensor measurements of light, temperature, humidity, and CO2 levels.
 In this case, M1 is responsible for classifying instances during the daytime, while M2 handles instances during the nighttime.
 
 ### BDD2Text
 
-The BDD2Text for _Occupancy_ reveals that one path has not changed between M1 and M2: a high level of light, in the 4th quartile, means that the room is well-lit and is the best indicator for showing whether it is occupied or not. 
+The BDD2Text for _Occupancy_ reveals that one path has not changed between M1 and M2: a high level of light, in the 4th quartile, means that the room is well-lit and is the best indicator for showing whether it is occupied or not.
 
 There is also one added path in M2: at nighttime, having the light variable in the 3rd quartile now leads to a positive classification, which was not true in M1. During the daytime, the light in this 3rd quartile would not have been sufficient to classify a data instance positively, but it is so during nighttime.
 
 &nbsp;
 &nbsp;
+
 <p align="center">
 <img src="/img/bdd2text.png" width="700" >
 </p>
@@ -90,12 +90,12 @@ To do so, MERLIN provides the _get_rule_examples_ function, which requires the u
 
 &nbsp;
 &nbsp;
+
 <p align="center">
 <img src="/img/get_examples.PNG" width="700" >
 </p>
 &nbsp;
 &nbsp;
-
 
 ## MERLIN on text data
 
@@ -112,12 +112,12 @@ Finally, M2 discarded the rule _having political atheist_ that was sufficient fo
 
 &nbsp;
 &nbsp;
+
 <p align="center">
-<img src="/img/bdd2text_LMI.PNG" width="700" >
+<img src="/img/bdd2text_atheism.PNG" width="700" >
 </p>
 &nbsp;
 &nbsp;
-
 
 ## Tutorials and Usage
 
@@ -128,5 +128,3 @@ A complete example of MERLIN usage is provided in the notebook ["MERLIN Demo"](/
 A citation for MERLIN will be released soon.
 
 MERLIN generalizes the approach proposed in _Malandri, L., Mercorio, F., Mezzanzanica, M., Nobani, N., & Seveso, A. (2022). ContrXT: Generating contrastive explanations from any text classifier. Information Fusion, 81, 103-115._ [(bibtex)](https://scholar.googleusercontent.com/scholar.bib?q=info:0m4K2oHziA8J:scholar.google.com/&output=citation&scisdr=Cm3RQ6UsEMDigjKD5sU:AGlGAw8AAAAAZJGF_sX6i_Yv-u1e4Uchy_LnXps&scisig=AGlGAw8AAAAAZJGF_olHzQufUAHR9c2EorlOe2s&scisf=4&ct=citation&cd=-1&hl=en)
-
-
