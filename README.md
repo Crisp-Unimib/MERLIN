@@ -1,4 +1,4 @@
-[![Pypi Downloads](https://img.shields.io/pypi/dm/MERLIN.svg?label=Pypi%20downloads)](https://pypi.org/project/MERLIN/)
+[![Pypi Downloads](https://img.shields.io/pypi/dm/MERLINXAI.svg?label=Pypi%20downloads)](https://pypi.org/project/MERLINXAI/)
 
 <!-- [![DOI:10.1016/j.inffus.2021.11.016](http://img.shields.io/badge/DOI-10.1016/j.inffus.2021.11.016-blue.svg)](https://doi.org/10.1016/j.inffus.2021.11.016) -->
 <!-- [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1hb4KN0SYxdj9SaExqqFGmAXAIyUnBVnA?usp=sharing) -->
