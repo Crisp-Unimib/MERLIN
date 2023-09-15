@@ -160,3 +160,4 @@ cython_debug/
 #.idea/
 tests/test_results/
 results/
+.vscode/settings.json
