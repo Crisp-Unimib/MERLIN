@@ -145,6 +145,17 @@ A complete example of MERLIN usage is provided in the notebook ["MERLIN Demo"](/
 
 ## References
 
-A citation for MERLIN will be released soon.
+To cite MERLIN please refer to [the following paper](https://www.sciencedirect.com/science/article/pii/S016792362300115X)
+
+```
+@article{malandri2023model,
+  title={Model-contrastive explanations through symbolic reasoning},
+  author={Malandri, Lorenzo and Mercorio, Fabio and Mezzanzanica, Mario and Seveso, Andrea},
+  journal={Decision Support Systems},
+  pages={114040},
+  year={2023},
+  publisher={Elsevier}
+}
+```
 
 MERLIN generalizes the approach proposed in _Malandri, L., Mercorio, F., Mezzanzanica, M., Nobani, N., & Seveso, A. (2022). ContrXT: Generating contrastive explanations from any text classifier. Information Fusion, 81, 103-115._ [(bibtex)](https://scholar.googleusercontent.com/scholar.bib?q=info:0m4K2oHziA8J:scholar.google.com/&output=citation&scisdr=Cm3RQ6UsEMDigjKD5sU:AGlGAw8AAAAAZJGF_sX6i_Yv-u1e4Uchy_LnXps&scisig=AGlGAw8AAAAAZJGF_olHzQufUAHR9c2EorlOe2s&scisf=4&ct=citation&cd=-1&hl=en)
