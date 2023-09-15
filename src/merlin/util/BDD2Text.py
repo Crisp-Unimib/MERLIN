@@ -5,7 +5,7 @@ from collections import defaultdict
 
 import pandas as pd
 from apyori import apriori
-from contrxt.util.helpers import text_formatter
+from merlin.util.helpers import text_formatter
 
 class BDD2Text(object):
     def __init__(self, file_path, cls, wrapp_size=100):
